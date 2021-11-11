@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "baseUrl": "src",
+        "paths" : {
+            "Assets/*" : ["src/assets/images/*"]
+        }
+    },
+    "include": ["./src", "./src/*"],
+    "exclude": ["node_modules"]
+}

@@ -1,0 +1,54 @@
+$container-sizes: (1400, 1200, 1000, 800, 600, 400);
+$selector: ();
+$selector-max: ();
+
+@each $item in $container-sizes {
+    $selector: append($selector, unquote('.w-#{$item}'), 'comma');
+    $selector-max: append($selector-max, unquote('.w-max-#{$item}'), 'comma');
+}
+
+#{$selector}{
+    max-width: 100%;
+    display: block;
+    margin: 0px auto;
+}
+
+#{$selector-max}{
+    display: block;
+    margin: 0px auto;
+}
+
+@each $size in $container-sizes{
+    .w-#{$size}{
+        width: #{$size}px;
+        
+    }
+}
+;
+@each $size in $container-sizes{
+    .w-max-#{$size}{
+        max-width: #{$size}px;
+
+        @if($size > 1000){
+
+            @media screen and (max-width: #{$size}px){
+                max-width:  #{$size - 200}px;;
+            }
+
+            @media screen and (max-width: #{$size - 200}px){
+                max-width:  #{$size - 400}px;
+            }
+
+            @media screen and (max-width: #{$size - 400}px){
+                max-width:  100%;
+            }
+        }@else{
+            @media screen and (max-width: #{$size}px){
+                max-width:  100%;
+            }
+
+        }
+
+       
+    }
+}

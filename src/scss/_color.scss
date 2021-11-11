@@ -1,0 +1,45 @@
+//normal theme color
+$colors: (
+    primary : (0,46,173),
+    secondary : (255,0,91),
+    on-secondary : (255,255,255),
+    lighten-1-primary: lighten(rgb(0,46,173), 10),
+    lighten-2-primary: lighten(rgb(0,46,173), 20),
+    lighten-3-primary: lighten(rgb(0,46,173), 30),
+    darken-1-primary: darken(rgb(0,46,173), 10),
+    darken-2-primary: darken(rgb(0,46,173), 20),
+    darken-3-primary: darken(rgb(0,46,173), 30),
+    on-primary : (255,255,255),
+    surface : (242, 242, 242),
+    on-surface : (66, 66, 66),
+    container : (242, 242, 242),
+    on-container : (66, 66, 66)
+);
+
+$colors-dark: (
+    primary : (46, 137, 255),
+    secondary : (255,0,91),
+    on-secondary : (255,255,255),
+    lighten-1-primary: lighten(rgb(46, 137, 255), 10),
+    lighten-2-primary: lighten(rgb(46, 137, 255), 20),
+    lighten-3-primary: lighten(rgb(46, 137, 255), 30),
+    darken-1-primary: darken(rgb(46, 137, 255), 10),
+    darken-2-primary: darken(rgb(46, 137, 255), 20),
+    darken-3-primary: darken(rgb(46, 137, 255), 30),
+    on-primary : (255,255,255),
+    on-surface : (242, 242, 242),
+    surface : (24, 25, 26),
+    container : (92, 92, 92),
+    on-container : (242, 242, 242),
+    
+);
+
+//creating a function to get color instead of using css varible
+@function getColor($color-name){
+    @return var(--color-#{$color-name});
+}
+
+//creating a function to get color with alpha parameter instead of using css varible
+@function getColorWithAlpha($color-name, $alpha : 1){
+    @return rgba(var(--color-#{$color-name}-rgb), $alpha);
+}
