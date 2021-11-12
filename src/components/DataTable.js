@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDataTable, {createTheme}  from 'react-data-table-component';
 
 
-const DataTable = ({loadUploader, tableData, ...rest}) => {
+const DataTable = ({loadUploader, tableData, currentTheme, ...rest}) => {
 
     const columns = [
         {
@@ -25,7 +25,7 @@ const DataTable = ({loadUploader, tableData, ...rest}) => {
     const customStyles = {
         headCells: {
             style: {
-                backgroundColor : "#000000",
+                backgroundColor : "#373737",
                 color: '#ffffff'
             }
         }
@@ -33,18 +33,18 @@ const DataTable = ({loadUploader, tableData, ...rest}) => {
 
     createTheme('solarized', {
         text: {
-          primary: '#268bd2',
+          primary: '#ffffff',
           secondary: '#2aa198',
         },
         background: {
-          default: '#002b36',
+          default: '#111',
         },
         context: {
-          background: '#cb4b16',
+          background: '#111',
           text: '#FFFFFF',
         },
         divider: {
-          default: '#073642',
+          default: '#222',
         },
         action: {
           button: 'rgba(0,0,0,.54)',
@@ -84,7 +84,7 @@ console.log(data);
             selectableRows
             pagination
             customStyles={customStyles}
-            theme="solarized"
+            theme={(currentTheme === "dark") ? "solarized" : ''}
         />
     </div>
     </>

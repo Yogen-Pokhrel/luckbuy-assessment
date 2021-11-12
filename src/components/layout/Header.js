@@ -7,7 +7,6 @@ const Head = () => {
   const [toggleDropdown, setToggleDropdown] = useState(false);
   const toggleDropdownMenu = () => {
     setToggleDropdown(!toggleDropdown);
-    console.log("I toggled on click", toggleDropdown);
     if(!toggleDropdown){
       document.addEventListener('click', handleClickOutside, true);
     }else{
@@ -22,7 +21,6 @@ const Head = () => {
     if ((!domNode || !domNode.contains(event.target)) && (!domNodeToggler || !domNodeToggler.contains(event.target))) {
       setToggleDropdown(false);
       clearEventListener();
-      console.log("I toggled on click on mouse up");
     }
 }
 
@@ -35,11 +33,11 @@ const clearEventListener = () => {
       <div className="w-max-1400">
       <Nav className=" justify-content-end">
         <Nav.Item>
-          <Nav.Link href="/" className="font-size-sm text-dark"><i className="bi bi-house-door"></i> Home </Nav.Link>
+          <Nav.Link href="/" className="font-size-sm text-dark nav-color "><i className="bi bi-house-door"></i> Home </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link href="#" className="font-size-sm text-dark relative" >
-            <div id="dropdown-toggler" onClick={toggleDropdownMenu}><img className="img-fluid profile-image me-2" alt="User" src={userImage}  /> Abdul Nasar <i className="bi bi-caret-down-fill"></i></div>
+            <div id="dropdown-toggler" className="nav-color" onClick={toggleDropdownMenu}><img className="img-fluid profile-image me-2" alt="User" src={userImage}  /> Abdul Nasar <i className="bi bi-caret-down-fill"></i></div>
             <div className={`dropdown-custom-wrapper `+ ((toggleDropdown === true) ? 'visible' : '')} id="dropdown-menu-home">
               <div className="dropdown-inner">
                 <ul className="dropdown-list">

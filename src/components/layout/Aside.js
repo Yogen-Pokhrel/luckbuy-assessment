@@ -1,26 +1,27 @@
 import React, {useState} from 'react'
 import {Nav} from "react-bootstrap";
+import { useSelector, useDispatch } from 'react-redux'
+import {setTheme} from "app/themeMode";
 
 
 const Aside = () => {
   const [isFullScreen, setIsFullScreen] = useState(true);
-  
+  const currentTheme = useSelector((state) => state.themeMode.value)
+  const dispatch = useDispatch();
   var locationName = window.location.pathname;
   let themeMode = "light";
-  let isChecked = false;
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
   if(!localStorage.getItem('theme')){
-    isChecked = (prefersDark) ? true : false;
     themeMode = (prefersDark) ? 'dark' : 'light';
     localStorage.setItem('theme', (prefersDark) ? 'dark' : 'light' );
   }else{
       
-      isChecked = (localStorage.getItem('theme') === 'dark') ? true : false;
       themeMode = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light';
   }
-const [theme, setThemeMode] = useState(themeMode);
+
  const updateTheme = () => {
-  if(theme === "dark"){
+  localStorage.setItem('theme', currentTheme );
+  if(currentTheme === "dark"){
       document.body.classList.add('dark-mode');
       document.body.classList.remove('light-mode');
   }else{
@@ -30,15 +31,16 @@ const [theme, setThemeMode] = useState(themeMode);
 }
 
 const changeThemeMode = () => {
-  if(theme === "dark") {
-    setThemeMode("light");
-    updateTheme(theme);
+  if(currentTheme === "dark") {
+    dispatch(setTheme("light"));
+    updateTheme();
   }else{
-    setThemeMode("dark");
-    updateTheme(theme);
+    dispatch(setTheme("dark"));
+    updateTheme();
   }
 }
  
+updateTheme();
   function fullscreen() {
    var isInFullScreen = (document.fullscreenElement && document.fullscreenElement !== null) ||
         (document.webkitFullscreenElement && document.webkitFullscreenElement !== null) ||
@@ -78,7 +80,7 @@ const changeThemeMode = () => {
       </Nav>
       <ul className="side_navbar mt-auto mb-0">
           <li className="nav_link cursor-pointer " onClick={fullscreen}><span className="link"><i className={(!isFullScreen) ? "bi bi-fullscreen-exit" : "bi bi-arrows-fullscreen"}></i></span></li>
-          <li className="nav_link cursor-pointer" onClick={changeThemeMode}><span className="link"><i className="bi bi-brightness-high-fill"></i></span></li>
+          <li className="nav_link cursor-pointer" onClick={changeThemeMode}><span className="link"><i className={(currentTheme === "dark") ? 'bi bi-brightness-high-fill' : "bi bi-moon-stars-fill"}></i></span></li>
       </ul>
     </div>
   )
