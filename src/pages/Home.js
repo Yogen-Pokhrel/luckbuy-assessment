@@ -1,9 +1,30 @@
 import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {toggleState} from "app/reducer";
+import {set} from "app/tableData";
+import DataTable from 'components/DataTable';
+import DataUpload from 'components/DataUpload';
+
 const Home = () => {
+  const toggleDataUpload = useSelector((state) => state.uploadState.value)
+  const tableData = useSelector((state) => state.tableData.value)
+  const dispatch = useDispatch();
+
+  const chooseComponentToRender = () => {
+   dispatch(toggleState());
+  }
+
+  const setTableData = (dt) =>{
+    dispatch(set(dt));
+  }
+
+  console.log("In Home Component",tableData);
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
-      Home
-    </div>
+  <>
+    {
+      (toggleDataUpload) ? <DataUpload loadTable={chooseComponentToRender}  setTableData={setTableData} /> : <DataTable tableData={tableData} loadUploader={chooseComponentToRender}  />
+    }
+  </>
   )
 }
 

@@ -7,12 +7,10 @@
     @extend %btn;
     border: 1px solid getColor(primary);
     background-color: getColor(primary);
-    background-image: linear-gradient(getColor(lighten-3-primary), getColor(lighten-1-primary), getColor(primary),getColor(lighten-1-primary), getColor(lighten-3-primary) );
 
     &:hover{
         background-color: getColor(primary);
         border-color: getColor(primary);
-        background-image: linear-gradient(getColor(lighten-3-primary), getColor(primary), getColor(primary),getColor(primary), getColor(lighten-3-primary) );
     }
 }
 
@@ -35,11 +33,4 @@
     &:hover{
         background-image: linear-gradient(getColor(lighten-1-primary), getColor(darken-1-primary), getColor(darken-3-primary),getColor(darken-1-primary), getColor(lighten-1-primary) );
     }
-}
-.dark-mode .btn-primary{
-        background-image: linear-gradient(getColor(primary), getColor(darken-1-primary), getColor(darken-3-primary),getColor(darken-1-primary), getColor(primary) );
-        
-        &:hover{
-            background-image: linear-gradient(getColor(lighten-1-primary), getColor(darken-1-primary), getColor(darken-3-primary),getColor(darken-1-primary), getColor(lighten-1-primary) );
-        }
 }

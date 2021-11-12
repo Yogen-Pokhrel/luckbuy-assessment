@@ -1,9 +1,9 @@
 import React from 'react'
-const Footer = () => {
+const Footer = (props) => {
   return (
-    <div className="c-app c-default-layout flex-row align-items-center">
-      Footer
-    </div>
+    <footer className={props.className}>
+      <span className="font-size-sm">Copyright &copy; Luckbuy. All rights reserved.</span>
+    </footer>
   )
 }
 

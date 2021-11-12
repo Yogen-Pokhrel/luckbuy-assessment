@@ -1,14 +1,16 @@
 //normal theme color
 $colors: (
-    primary : (0,46,173),
+    light : (255,255,255),
+    dark : (0,0,0),
+    primary : (21,98,254),
     secondary : (255,0,91),
     on-secondary : (255,255,255),
-    lighten-1-primary: lighten(rgb(0,46,173), 10),
-    lighten-2-primary: lighten(rgb(0,46,173), 20),
-    lighten-3-primary: lighten(rgb(0,46,173), 30),
-    darken-1-primary: darken(rgb(0,46,173), 10),
-    darken-2-primary: darken(rgb(0,46,173), 20),
-    darken-3-primary: darken(rgb(0,46,173), 30),
+    lighten-1-primary: lighten(rgb(21,98,254), 10),
+    lighten-2-primary: lighten(rgb(21,98,254), 20),
+    lighten-3-primary: lighten(rgb(21,98,254), 30),
+    darken-1-primary: darken(rgb(21,98,254), 10),
+    darken-2-primary: darken(rgb(21,98,254), 20),
+    darken-3-primary: darken(rgb(21,98,254), 30),
     on-primary : (255,255,255),
     surface : (242, 242, 242),
     on-surface : (66, 66, 66),
@@ -17,6 +19,8 @@ $colors: (
 );
 
 $colors-dark: (
+    light: (0,0,0),
+    dark: (255,255,255),
     primary : (46, 137, 255),
     secondary : (255,0,91),
     on-secondary : (255,255,255),
